@@ -34,7 +34,7 @@ class _DetailListState extends State<DetailList> {
                 key: Key("MMKey"),
                 onChanged: (value) {
                   setState(() {
-                    MakeModelText = value;
+                    makeModelText = value;
                   });
                 },
                 controller: _MakeModelController,
@@ -45,7 +45,7 @@ class _DetailListState extends State<DetailList> {
                   key: Key("PackKey"),
                   onChanged: (value) {
                     setState(() {
-                      PackageText = value;
+                      packageText = value;
                     });
                   },
                   controller: _PackageController,
@@ -56,7 +56,7 @@ class _DetailListState extends State<DetailList> {
                   //keyboardType: TextInputType.number,
                   onChanged: (value) {
                     setState(() {
-                      PriceEstimateText = int.parse(value);
+                      priceEstimateText = int.parse(value);
                     });
                   },
                   controller: _PriceEstimateController,
@@ -70,8 +70,8 @@ class _DetailListState extends State<DetailList> {
                 child: const Text('OK'),
                 onPressed: () {
                   setState(() {
-                    _handleNewItem(PackageText, MakeModelText, PackageText,
-                        PriceEstimateText);
+                    _handleNewItem(packageText, makeModelText, packageText,
+                        priceEstimateText);
                     Navigator.pop(context);
                   });
                 },
@@ -106,11 +106,11 @@ class _DetailListState extends State<DetailList> {
 
   String valueText = "";
 
-  String MakeModelText = "";
+  String makeModelText = "";
 
-  String PackageText = "";
+  String packageText = "";
 
-  int PriceEstimateText = 0;
+  int priceEstimateText = 0;
 
   final List<Car> cars1 = [
     const Car(makemodel: "Nissan Example", package: "Ex: 1", priceestimate: 100)
