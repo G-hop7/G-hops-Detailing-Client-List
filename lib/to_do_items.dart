@@ -81,11 +81,7 @@ class ToDoListItem extends StatelessWidget {
         child: Text(cars.abbrev()),
       ),
       title: Text(
-        cars.makemodel +
-            ', ' +
-            cars.package +
-            ', ' +
-            cars.priceestimate.toString(),
+        '${cars.makemodel}, ${cars.package}, ${cars.priceestimate}',
         style: _getTextStyle(context),
       ),
     );
