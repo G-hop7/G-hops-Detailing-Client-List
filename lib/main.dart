@@ -13,9 +13,9 @@ class DetailList extends StatefulWidget {
 
 class _DetailListState extends State<DetailList> {
   // Dialog with text from https://www.appsdeveloperblog.com/alert-dialog-with-a-text-field-in-flutter/
-  final TextEditingController _MakeModelController = TextEditingController();
-  final TextEditingController _PackageController = TextEditingController();
-  final TextEditingController _PriceEstimateController =
+  final TextEditingController _makeModelController = TextEditingController();
+  final TextEditingController _packageController = TextEditingController();
+  final TextEditingController _priceEstimateController =
       TextEditingController();
   final ButtonStyle yesStyle = ElevatedButton.styleFrom(
       textStyle: const TextStyle(fontSize: 20), primary: Colors.green);
@@ -37,7 +37,7 @@ class _DetailListState extends State<DetailList> {
                     makeModelText = value;
                   });
                 },
-                controller: _MakeModelController,
+                controller: _makeModelController,
                 decoration:
                     const InputDecoration(hintText: "Vehicle Make/Model"),
               ),
@@ -48,7 +48,7 @@ class _DetailListState extends State<DetailList> {
                       packageText = value;
                     });
                   },
-                  controller: _PackageController,
+                  controller: _packageController,
                   decoration: const InputDecoration(
                       hintText: "Select Package 1, 2, or 3")),
               TextField(
@@ -59,7 +59,7 @@ class _DetailListState extends State<DetailList> {
                       priceEstimateText = int.parse(value);
                     });
                   },
-                  controller: _PriceEstimateController,
+                  controller: _priceEstimateController,
                   decoration: const InputDecoration(
                       hintText: "Enter your price range")),
             ]),
@@ -79,7 +79,7 @@ class _DetailListState extends State<DetailList> {
 
               // https://stackoverflow.com/questions/52468987/how-to-turn-disabled-button-into-enabled-button-depending-on-conditions
               ValueListenableBuilder<TextEditingValue>(
-                valueListenable: _MakeModelController,
+                valueListenable: _makeModelController,
                 builder: (context, value, child) {
                   return ElevatedButton(
                     key: const Key("CancelButton"),
@@ -160,9 +160,9 @@ class _DetailListState extends State<DetailList> {
           makemodel: makeModel, package: package, priceestimate: priceEstimate);
       cars1.insert(0, cars);
       _totalDetailCost += priceEstimate;
-      _MakeModelController.clear();
-      _PackageController.clear();
-      _PriceEstimateController.clear();
+      _makeModelController.clear();
+      _packageController.clear();
+      _priceEstimateController.clear();
     });
   }
 
