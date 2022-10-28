@@ -27,8 +27,7 @@ void main() {
                 completed: true,
                 onListChanged: (bool completed, Car car) {},
                 onDeleteItem: (Car cars) {}))));
-    final mmFinder = find.text("test1" + ", " + "test2" + ", " + '3');
-
+    final mmFinder = find.text("test1, test2, 3");
     expect(mmFinder, findsWidgets);
   });
 
@@ -88,7 +87,7 @@ void main() {
 
     await tester.tap(find.byKey(const Key("OKButton")));
     await tester.pump();
-    expect(find.text("Nissan" + ", " + "2" + ", " + '100'), findsWidgets);
+    expect(find.text("Nissan, 2, 100"), findsWidgets);
 
     final listItemFinder = find.byType(ToDoListItem);
 
