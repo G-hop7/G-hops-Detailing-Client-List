@@ -18,9 +18,9 @@ class _DetailListState extends State<DetailList> {
   final TextEditingController _priceEstimateController =
       TextEditingController();
   final ButtonStyle yesStyle = ElevatedButton.styleFrom(
-      textStyle: const TextStyle(fontSize: 20), primary: Colors.green);
+      textStyle: const TextStyle(fontSize: 20), backgroundColor: Colors.green);
   final ButtonStyle noStyle = ElevatedButton.styleFrom(
-      textStyle: const TextStyle(fontSize: 20), primary: Colors.red);
+      textStyle: const TextStyle(fontSize: 20), backgroundColor: Colors.red);
 
   Future<void> _displayTextInputDialog(BuildContext context) async {
     print("Loading Dialog");
@@ -113,14 +113,14 @@ class _DetailListState extends State<DetailList> {
   int priceEstimateText = 0;
 
   final List<Car> cars1 = [
-    const Car(makemodel: "Nissan Example", package: "Ex: 1", priceestimate: 100)
+    const Car(makeModel: "Nissan Example", package: "Ex: 1", priceEstimate: 100)
   ];
 //Need to find a way to display all text across banner rather than just 1st text
 
   final _carSet = <Car>{};
 
   final Car cars = const Car(
-      makemodel: " Nissan Altima S", package: " 1", priceestimate: 100);
+      makeModel: " Nissan Altima S", package: " 1", priceEstimate: 100);
   //Example
 
   void _handleListChanged(bool completed, Car car) {
@@ -147,7 +147,7 @@ class _DetailListState extends State<DetailList> {
     setState(() {
       print("Deleting item");
       cars1.remove(Car);
-      _totalDetailCost -= Car.priceestimate;
+      _totalDetailCost -= Car.priceEstimate;
       _detailcounter--;
     });
   }
@@ -157,7 +157,7 @@ class _DetailListState extends State<DetailList> {
     setState(() {
       print("Adding new item");
       Car cars = Car(
-          makemodel: makeModel, package: package, priceestimate: priceEstimate);
+          makeModel: makeModel, package: package, priceEstimate: priceEstimate);
       cars1.insert(0, cars);
       _totalDetailCost += priceEstimate;
       _makeModelController.clear();

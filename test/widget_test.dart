@@ -13,7 +13,7 @@ import 'package:to_dont_list/to_do_items.dart';
 
 void main() {
   test('Item abbreviation should be first letter', () {
-    const cars = Car(makemodel: 'Nissan', package: '1', priceestimate: 150);
+    const cars = Car(makeModel: 'Nissan', package: '1', priceEstimate: 150);
     expect(cars.abbrev(), "N");
   });
 
@@ -23,7 +23,7 @@ void main() {
         home: Scaffold(
             body: ToDoListItem(
                 cars: const Car(
-                    makemodel: 'test1', package: 'test2', priceestimate: 3),
+                    makeModel: 'test1', package: 'test2', priceEstimate: 3),
                 completed: true,
                 onListChanged: (bool completed, Car car) {},
                 onDeleteItem: (Car cars) {}))));
@@ -37,7 +37,7 @@ void main() {
         home: Scaffold(
             body: ToDoListItem(
                 cars: const Car(
-                    makemodel: 'test', package: 'test', priceestimate: 3),
+                    makeModel: 'test', package: 'test', priceEstimate: 3),
                 completed: true,
                 onListChanged: (bool completed, Car car) {},
                 onDeleteItem: (Car cars) {}))));
