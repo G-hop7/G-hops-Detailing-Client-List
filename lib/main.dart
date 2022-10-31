@@ -31,7 +31,7 @@ class _DetailListState extends State<DetailList> {
             title: const Text('Add detail'),
             content: Column(children: <Widget>[
               TextField(
-                key: Key("MMKey"),
+                key: const Key("MMKey"),
                 onChanged: (value) {
                   setState(() {
                     makeModelText = value;
@@ -42,7 +42,7 @@ class _DetailListState extends State<DetailList> {
                     const InputDecoration(hintText: "Vehicle Make/Model"),
               ),
               TextField(
-                  key: Key("PackKey"),
+                  key: const Key("PackKey"),
                   onChanged: (value) {
                     setState(() {
                       packageText = value;

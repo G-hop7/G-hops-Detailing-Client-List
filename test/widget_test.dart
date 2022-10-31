@@ -73,15 +73,15 @@ void main() {
     expect(find.text("2"), findsNothing);
     expect(find.text("100"), findsNothing);
 
-    await tester.enterText(find.byKey(Key("MMKey")), 'Nissan');
+    await tester.enterText(find.byKey(const Key("MMKey")), 'Nissan');
     await tester.pump();
     expect(find.text("Nissan"), findsOneWidget);
 
-    await tester.enterText(find.byKey(Key("PackKey")), '2');
+    await tester.enterText(find.byKey(const Key("PackKey")), '2');
     await tester.pump();
     expect(find.text("2"), findsOneWidget);
 
-    await tester.enterText(find.byKey(Key("PEKey")), "100");
+    await tester.enterText(find.byKey(const Key("PEKey")), "100");
     await tester.pump();
     expect(find.text("100"), findsOneWidget);
 
