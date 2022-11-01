@@ -14,16 +14,16 @@ class Item {
 
 class Car {
   const Car(
-      {required this.makemodel,
+      {required this.makeModel,
       required this.package,
-      required this.priceestimate});
+      required this.priceEstimate});
 
-  final String makemodel;
+  final String makeModel;
   final String package;
-  final int priceestimate;
+  final int priceEstimate;
 
   String abbrev() {
-    return makemodel.substring(0, 1);
+    return makeModel.substring(0, 1);
   }
 }
 
@@ -81,11 +81,7 @@ class ToDoListItem extends StatelessWidget {
         child: Text(cars.abbrev()),
       ),
       title: Text(
-        cars.makemodel +
-            ', ' +
-            cars.package +
-            ', ' +
-            cars.priceestimate.toString(),
+        '${cars.makeModel}, ${cars.package}, ${cars.priceEstimate}',
         style: _getTextStyle(context),
       ),
     );

@@ -13,7 +13,7 @@ import 'package:to_dont_list/to_do_items.dart';
 
 void main() {
   test('Item abbreviation should be first letter', () {
-    const cars = Car(makemodel: 'Nissan', package: '1', priceestimate: 150);
+    const cars = Car(makeModel: 'Nissan', package: '1', priceEstimate: 150);
     expect(cars.abbrev(), "N");
   });
 
@@ -23,12 +23,11 @@ void main() {
         home: Scaffold(
             body: ToDoListItem(
                 cars: const Car(
-                    makemodel: 'test1', package: 'test2', priceestimate: 3),
+                    makeModel: 'test1', package: 'test2', priceEstimate: 3),
                 completed: true,
                 onListChanged: (bool completed, Car car) {},
                 onDeleteItem: (Car cars) {}))));
-    final mmFinder = find.text("test1" + ", " + "test2" + ", " + '3');
-
+    final mmFinder = find.text("test1, test2, 3");
     expect(mmFinder, findsWidgets);
   });
 
@@ -38,7 +37,7 @@ void main() {
         home: Scaffold(
             body: ToDoListItem(
                 cars: const Car(
-                    makemodel: 'test', package: 'test', priceestimate: 3),
+                    makeModel: 'test', package: 'test', priceEstimate: 3),
                 completed: true,
                 onListChanged: (bool completed, Car car) {},
                 onDeleteItem: (Car cars) {}))));
@@ -74,21 +73,21 @@ void main() {
     expect(find.text("2"), findsNothing);
     expect(find.text("100"), findsNothing);
 
-    await tester.enterText(find.byKey(Key("MMKey")), 'Nissan');
+    await tester.enterText(find.byKey(const Key("MMKey")), 'Nissan');
     await tester.pump();
     expect(find.text("Nissan"), findsOneWidget);
 
-    await tester.enterText(find.byKey(Key("PackKey")), '2');
+    await tester.enterText(find.byKey(const Key("PackKey")), '2');
     await tester.pump();
     expect(find.text("2"), findsOneWidget);
 
-    await tester.enterText(find.byKey(Key("PEKey")), "100");
+    await tester.enterText(find.byKey(const Key("PEKey")), "100");
     await tester.pump();
     expect(find.text("100"), findsOneWidget);
 
     await tester.tap(find.byKey(const Key("OKButton")));
     await tester.pump();
-    expect(find.text("Nissan" + ", " + "2" + ", " + '100'), findsWidgets);
+    expect(find.text("Nissan, 2, 100"), findsWidgets);
 
     final listItemFinder = find.byType(ToDoListItem);
 

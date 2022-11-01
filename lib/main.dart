@@ -13,14 +13,14 @@ class DetailList extends StatefulWidget {
 
 class _DetailListState extends State<DetailList> {
   // Dialog with text from https://www.appsdeveloperblog.com/alert-dialog-with-a-text-field-in-flutter/
-  final TextEditingController _MakeModelController = TextEditingController();
-  final TextEditingController _PackageController = TextEditingController();
-  final TextEditingController _PriceEstimateController =
+  final TextEditingController _makeModelController = TextEditingController();
+  final TextEditingController _packageController = TextEditingController();
+  final TextEditingController _priceEstimateController =
       TextEditingController();
   final ButtonStyle yesStyle = ElevatedButton.styleFrom(
-      textStyle: const TextStyle(fontSize: 20), primary: Colors.green);
+      textStyle: const TextStyle(fontSize: 20), backgroundColor: Colors.green);
   final ButtonStyle noStyle = ElevatedButton.styleFrom(
-      textStyle: const TextStyle(fontSize: 20), primary: Colors.red);
+      textStyle: const TextStyle(fontSize: 20), backgroundColor: Colors.red);
 
   Future<void> _displayTextInputDialog(BuildContext context) async {
     print("Loading Dialog");
@@ -31,24 +31,24 @@ class _DetailListState extends State<DetailList> {
             title: const Text('Add detail'),
             content: Column(children: <Widget>[
               TextField(
-                key: Key("MMKey"),
+                key: const Key("MMKey"),
                 onChanged: (value) {
                   setState(() {
-                    MakeModelText = value;
+                    makeModelText = value;
                   });
                 },
-                controller: _MakeModelController,
+                controller: _makeModelController,
                 decoration:
                     const InputDecoration(hintText: "Vehicle Make/Model"),
               ),
               TextField(
-                  key: Key("PackKey"),
+                  key: const Key("PackKey"),
                   onChanged: (value) {
                     setState(() {
-                      PackageText = value;
+                      packageText = value;
                     });
                   },
-                  controller: _PackageController,
+                  controller: _packageController,
                   decoration: const InputDecoration(
                       hintText: "Select Package 1, 2, or 3")),
               TextField(
@@ -56,10 +56,10 @@ class _DetailListState extends State<DetailList> {
                   //keyboardType: TextInputType.number,
                   onChanged: (value) {
                     setState(() {
-                      PriceEstimateText = int.parse(value);
+                      priceEstimateText = int.parse(value);
                     });
                   },
-                  controller: _PriceEstimateController,
+                  controller: _priceEstimateController,
                   decoration: const InputDecoration(
                       hintText: "Enter your price range")),
             ]),
@@ -70,8 +70,8 @@ class _DetailListState extends State<DetailList> {
                 child: const Text('OK'),
                 onPressed: () {
                   setState(() {
-                    _handleNewItem(PackageText, MakeModelText, PackageText,
-                        PriceEstimateText);
+                    _handleNewItem(packageText, makeModelText, packageText,
+                        priceEstimateText);
                     Navigator.pop(context);
                   });
                 },
@@ -79,7 +79,7 @@ class _DetailListState extends State<DetailList> {
 
               // https://stackoverflow.com/questions/52468987/how-to-turn-disabled-button-into-enabled-button-depending-on-conditions
               ValueListenableBuilder<TextEditingValue>(
-                valueListenable: _MakeModelController,
+                valueListenable: _makeModelController,
                 builder: (context, value, child) {
                   return ElevatedButton(
                     key: const Key("CancelButton"),
@@ -106,21 +106,21 @@ class _DetailListState extends State<DetailList> {
 
   String valueText = "";
 
-  String MakeModelText = "";
+  String makeModelText = "";
 
-  String PackageText = "";
+  String packageText = "";
 
-  int PriceEstimateText = 0;
+  int priceEstimateText = 0;
 
   final List<Car> cars1 = [
-    const Car(makemodel: "Nissan Example", package: "Ex: 1", priceestimate: 100)
+    const Car(makeModel: "Nissan Example", package: "Ex: 1", priceEstimate: 100)
   ];
 //Need to find a way to display all text across banner rather than just 1st text
 
   final _carSet = <Car>{};
 
   final Car cars = const Car(
-      makemodel: " Nissan Altima S", package: " 1", priceestimate: 100);
+      makeModel: " Nissan Altima S", package: " 1", priceEstimate: 100);
   //Example
 
   void _handleListChanged(bool completed, Car car) {
@@ -147,7 +147,7 @@ class _DetailListState extends State<DetailList> {
     setState(() {
       print("Deleting item");
       cars1.remove(Car);
-      _totalDetailCost -= Car.priceestimate;
+      _totalDetailCost -= Car.priceEstimate;
       _detailcounter--;
     });
   }
@@ -157,12 +157,12 @@ class _DetailListState extends State<DetailList> {
     setState(() {
       print("Adding new item");
       Car cars = Car(
-          makemodel: makeModel, package: package, priceestimate: priceEstimate);
+          makeModel: makeModel, package: package, priceEstimate: priceEstimate);
       cars1.insert(0, cars);
       _totalDetailCost += priceEstimate;
-      _MakeModelController.clear();
-      _PackageController.clear();
-      _PriceEstimateController.clear();
+      _makeModelController.clear();
+      _packageController.clear();
+      _priceEstimateController.clear();
     });
   }
 
